@@ -153,16 +153,21 @@ jobs:
         run: echo "RUST=$(rustc --version)" >> "$GITHUB_ENV"
 
       - name: Prepare report for Codecov
+        if: false   # disable step in private fork
         run: cargo nextest run --profile ci --locked --all-targets -p openzeppelin-stylus -p openzeppelin-stylus-proc -p openzeppelin-crypto
 
       - name: Upload test results to Codecov
-        if: ${{ !cancelled() }}
+        if: false 
+        #if: ${{ !cancelled() }}
         uses: codecov/test-results-action@v1
         with:
+          fail_ci_if_error: true
           files: target/nextest/ci/junit.xml
           token: ${{ secrets.CODECOV_TOKEN }}
+          env_vars: OS,RUST
 
       - name: Upload to codecov.io
+        if: ${{ false }}
         uses: codecov/codecov-action@v5
         with:
           fail_ci_if_error: true
