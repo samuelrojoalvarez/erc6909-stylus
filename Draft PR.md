@@ -88,7 +88,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
   - **Behavior:** `_record_id(id)` on first mint; trait `IErc6909Enumerable` with `total_ids()` & `id_by_index()`.
 
-**Composite Token:** `MyToken`
+## **Composite Token:** `MyToken`
 
     ```bash
         #[storage]
@@ -99,15 +99,15 @@ A composite `MyToken` aggregates these components into a single contract.
         - Single `from(&vm)` constructor wiring all sub‐contracts.
     ```
 
-**Testing Strategy**
+## **Testing Strategy**
 
-**Unit Tests (Native):** `#[cfg(test)]` modules driven by `TestVM`, using `motsu::test` for consistency.
+- **Unit Tests (Native):** `#[cfg(test)]` modules driven by `TestVM`, using `motsu::test` for consistency.
 
-**Examples & Integration:** `examples/erc6909-supply.rs`, `examples/erc6909-extensions.rs`, `examples/erc6909-composite.rs`.
+- **Examples & Integration:** `examples/erc6909-supply.rs`, `examples/erc6909-extensions.rs`, `examples/erc6909-composite.rs`.
 
-**Benchmarks:** `benches/erc6909_core.rs`, `erc6909_supply.rs`, etc.
+- **Benchmarks:** `benches/erc6909_core.rs`, `erc6909_supply.rs`, etc.
 
-**Next Steps & Discussion**
+## **Next Steps & Discussion**
 
 - **WASM Test Harness:** Migrate to wasm32-wasi + motsu for on‐chain parity.
 
