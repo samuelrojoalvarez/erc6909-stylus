@@ -28,37 +28,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 ## Architecture
 
-┌──────────────────────────────────────────────────────────────┐
-│ openzeppelin_stylus::token::erc6909                          │
-│                                                              │
-│   ┌───────────┐      ┌───────────┐      ┌───────────┐        │
-│   │ traits.rs │      │ error.rs  │      │ mod.rs    │        │
-│   └────┬──────┘      └────┬──────┘      └─────┬─────┘        │
-│        │                  │                   │              │
-│        ▼                  ▼                   ▼              │
-│   ┌──────────────────────────────────────────────┐           │
-│   │            erc6909.rs  (core)                │           │
-│   │  • Implements IErc6909, Mintable, Burnable   │           │
-│   │  • Defines +`_update`, `_mint`, `_burn`       │           │
-│   └──────────────────────────────────────────────┘           │
-│              │                │               │              │
-│              │                │               │              │
-│   ┌──────────▼───────┐  ┌─────▼─────────┐ ┌───▼───────────┐  │
-│   │ extensions/      │  │ extensions/   │ │ extensions/   │  │
-│   │ metadata_uri.rs  │  │ token_supply.rs │ enumerable.rs │  │
-│   │ (URI storage)    │  │ (TotalSupply) │ │ (ID index)    │  │
-│   └──────────┬───────┘  └─────┬─────────┘ └───┬───────────┘  │
-│              │                │               │              │
-│     Delegates│         Overrides `_update`    │              │
-│     token_uri│          to track supply       │              │
-│              │                                │              │
-└──────────────▼────────────────────────────────┴──────────────┘
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/2a2794c8-3d0c-4e14-a9b1-df47df586590)
 
 
 **Core:** Erc6909  **-->** **`$pwd`:** [/contracts/src/token/erc6909/erc6909.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/erc6909.rs)
