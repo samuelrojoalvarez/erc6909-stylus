@@ -28,7 +28,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 ## Architecture
 
-**Core:** Erc6909
+**Core:** Erc6909 --> contracts/src/erc6909/erc6909.rs
 
 - **StorageLayout:** 
 
@@ -56,7 +56,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 - **Internal Hooks:** `_update`, `_mint`, `_burn` for transfers, minting, and burning.
 
-**Supply Extension:** Erc6909Supply
+**Supply Extension:** Erc6909Supply --> /contracts/src/token/erc6909/extensions/token_supply.rs
 
   - **Tracks** `_total_supplies: Map<Id, Uint<256>>`
 
@@ -64,7 +64,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
   - **Trait:** `IErc6909Supply` with `total_supply(id)`.
 
-**Metadata Extension:** Erc6909MetadataUri
+**Metadata Extension:** Erc6909MetadataUri  --> /contracts/src/token/erc6909/extensions/metadata_uri.rs
 
 - **Stores:**
 
@@ -72,13 +72,13 @@ A composite `MyToken` aggregates these components into a single contract.
 
     - `uri_byte: Map<Id, Map<Idx, Uint<8>>>`
 
-- **API (trait IErc6909MetadataUri):**
+- **API (trait IErc6909MetadataUri):** 
 
     - `token_uri(id): Vec<u8>`
 
     - `set_token_uri(caller, id, uri)`
 
-**Enumerable Extension:** Erc6909Enumerable
+**Enumerable Extension:** Erc6909Enumerable --> /contracts/src/token/erc6909/extensions/enumerable.rs
 
 - **Stores:**
 
@@ -103,11 +103,20 @@ A composite `MyToken` aggregates these components into a single contract.
 
 ## **Testing Strategy**
 
-- **Unit Tests (Native):** `#[cfg(test)]` modules driven by `TestVM`, using `motsu::test` for consistency.
+- **Unit Tests (Native):** `#[cfg(test)]` modules driven by `TestVM`, using `motsu::test` for consistency. --> /contracts/src/token/erc6909/erc6909.rs
 
-- **Examples & Integration:** `examples/erc6909-supply.rs`, `examples/erc6909-extensions.rs`, `examples/erc6909-composite.rs`.
+- **Examples & Integration:** `examples/erc6909-supply.rs`, `examples/erc6909-extensions.rs`.
 
 - **Benchmarks:** `benches/erc6909_core.rs`, `erc6909_supply.rs`, etc.
+      ```bash
+    total 36
+    drwxrwxr-x 2 ubu ubu  4096 jun 26 14:19 .
+    drwxrwxr-x 8 ubu ubu  4096 jun 28 03:08 ..
+    -rw-rw-r-- 1 ubu ubu 13152 jun 26 18:52 erc6909_core.rs
+    -rw-rw-r-- 1 ubu ubu  1980 jun 28 00:05 erc6909_enumerable.rs
+    -rw-rw-r-- 1 ubu ubu  1455 jun 28 00:05 erc6909_metadata.rs
+    -rw-rw-r-- 1 ubu ubu  2224 jun 28 00:05 erc6909_supply.rs
+      ```
 
 ## **Next Steps & Discussion**
 
