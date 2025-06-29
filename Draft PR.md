@@ -30,7 +30,7 @@ A composite MyToken aggregates these components into a single contract.
 
 **Core:** Erc6909
 
--** StorageLayout:**
+- ** StorageLayout**: 
 
     - balances: Map<Owner, Map<Id, Uint<256>>>
 
@@ -56,7 +56,7 @@ A composite MyToken aggregates these components into a single contract.
 
 - **Internal Hooks:** _update, _mint, _burn for transfers, minting, and burning.
 
-**Supply Extension: **Erc6909Supply
+**Supply Extension:** Erc6909Supply
 
   - **Tracks** _total_supplies: Map<Id, Uint<256>>
 
@@ -64,7 +64,7 @@ A composite MyToken aggregates these components into a single contract.
 
   - **Trait:** IErc6909Supply with total_supply(id).
 
-**Metadata Extension: **Erc6909MetadataUri
+**Metadata Extension:** Erc6909MetadataUri
 
 - **Stores:**
 
