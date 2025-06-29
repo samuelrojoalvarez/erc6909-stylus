@@ -28,7 +28,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 ## Architecture
 
-**Core:** Erc6909  **-->** **`$pwd`:** [contracts/src/token/erc6909/erc6909.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/erc6909.rs)'
+**Core:** Erc6909  **-->** **`$pwd`:** **[/contracts/src/token/erc6909/erc6909.rs]**(https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/erc6909.rs)'
 
 - **StorageLayout:** 
 
