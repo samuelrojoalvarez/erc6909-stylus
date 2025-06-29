@@ -56,7 +56,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 - **Internal Hooks:** `_update`, `_mint`, `_burn` for transfers, minting, and burning.
 
-**Supply Extension:** Erc6909Supply **`$pwd`:**--> `[/contracts/src/token/erc6909/extensions/token_supply.rs]([url](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/token_supply.rs))`
+**Supply Extension:** Erc6909Supply **`$pwd`:**--> `[/contracts/src/token/erc6909/extensions/token_supply.rs]`([url](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/token_supply.rs))
 
   - **Tracks** `_total_supplies: Map<Id, Uint<256>>`
 
@@ -64,7 +64,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
   - **Trait:** `IErc6909Supply` with `total_supply(id)`.
 
-**Metadata Extension:** Erc6909MetadataUri  **`$pwd`:** --> `[/contracts/src/token/erc6909/extensions/metadata_uri.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/metadata_uri.rs)`
+**Metadata Extension:** Erc6909MetadataUri  **`$pwd`:** --> `[/contracts/src/token/erc6909/extensions/metadata_uri.rs]`(https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/metadata_uri.rs)
 
 - **Stores:**
 
@@ -78,7 +78,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
     - `set_token_uri(caller, id, uri)`
 
-**Enumerable Extension:** Erc6909Enumerable **`$pwd`:** --> `[/contracts/src/token/erc6909/extensions/enumerable.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/enumerable.rs)`
+**Enumerable Extension:** Erc6909Enumerable **`$pwd`:** --> `[/contracts/src/token/erc6909/extensions/enumerable.rs]`(https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/enumerable.rs)
 
 - **Stores:**
 
@@ -103,7 +103,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 ## **Testing Strategy**
 
-- **Unit Tests (Native):** `#[cfg(test)]` modules driven by `TestVM`, using `motsu::test` for consistency. --> `/contracts/src/token/erc6909/erc6909.rs`
+- **Unit Tests (Native):** `#[cfg(test)]` modules driven by `TestVM`, using `motsu::test` for consistency. --> `[/contracts/src/token/erc6909/erc6909.rs]([url](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/erc6909.rs))
 
 - **Examples & Integration:** **`$pwd`:** `[/contracts/examples/](https://github.com/samuelrojoalvarez/erc6909-stylus/tree/main/contracts/examples)` :
      ```bash
