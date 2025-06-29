@@ -112,8 +112,8 @@ A composite `MyToken` aggregates these components into a single contract.
     total 16
     drwxrwxr-x 2 ubu ubu 4096 jun 27 23:19 .
     drwxrwxr-x 8 ubu ubu 4096 jun 28 03:08 ..
-    -rw-rw-r-- 1 ubu ubu 1923 jun 27 23:19 `[erc6909-extensions.rs]`
-    -rw-rw-r-- 1 ubu ubu 1994 jun 28 03:48 `[erc6909-supply.rs]`
+    -rw-rw-r-- 1 ubu ubu 1923 jun 27 23:19 erc6909-extensions.rs
+    -rw-rw-r-- 1 ubu ubu 1994 jun 28 03:48 erc6909-supply.rs
    ```
 
 - **Benchmarks:** **`$pwd`:** [/contracts/benches/](https://github.com/samuelrojoalvarez/erc6909-stylus/tree/main/contracts/benches) : 
@@ -122,10 +122,10 @@ A composite `MyToken` aggregates these components into a single contract.
     total 36
     drwxrwxr-x 2 ubu ubu  4096 jun 26 14:19 .
     drwxrwxr-x 8 ubu ubu  4096 jun 28 03:08 ..
-    -rw-rw-r-- 1 ubu ubu 13152 jun 26 18:52 `[erc6909_core.rs]`
-    -rw-rw-r-- 1 ubu ubu  1980 jun 28 00:05 `[erc6909_enumerable.rs]`
-    -rw-rw-r-- 1 ubu ubu  1455 jun 28 00:05 `[erc6909_metadata.rs]`
-    -rw-rw-r-- 1 ubu ubu  2224 jun 28 00:05 `[erc6909_supply.rs]`
+    -rw-rw-r-- 1 ubu ubu 13152 jun 26 18:52 erc6909_core.rs
+    -rw-rw-r-- 1 ubu ubu  1980 jun 28 00:05 erc6909_enumerable.rs
+    -rw-rw-r-- 1 ubu ubu  1455 jun 28 00:05 erc6909_metadata.rs
+    -rw-rw-r-- 1 ubu ubu  2224 jun 28 00:05 erc6909_supply.rs
    ```
 
 ## **Next Steps & Discussion**
