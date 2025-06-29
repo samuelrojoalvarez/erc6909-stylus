@@ -18,7 +18,7 @@ A composite MyToken aggregates these components into a single contract.
 
 **1. Gas/Efficiency:** Leverage #[storage]‐generated accessors, minimal loops, and checked arithmetic.
 
-**2. Modularity: **Core + orthogonal extensions that can be mixed & matched.
+**2. Modularity:** Core + orthogonal extensions that can be mixed & matched.
 
 **3. Rust‐Native Ergonomics:** Clear traits (IErc6909, IErc6909Supply, etc.), no unsafe, and no‐std compatibility.
 
