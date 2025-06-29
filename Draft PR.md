@@ -97,6 +97,7 @@ A composite `MyToken` aggregates these components into a single contract.
     - Delegates calls to the appropriate extension.
     
     - Single `from(&vm)` constructor wiring all sub‐contracts.
+    
     ```
 
 **Testing Strategy**
