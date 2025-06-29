@@ -19,6 +19,8 @@ use super::{
     traits::{IErc6909, IErc6909Burnable, IErc6909Mintable},
 };
 
+// use stylus_sdk::testing::TestVM;
+
 
 /// Core ERC-6909 (no supply tracking), single-ID multi-token standard.
 ///
@@ -257,10 +259,10 @@ mod tests {
     fn fresh_core() -> (Erc6909, TestVM, Address, Address, U256) {
         let vm    = TestVM::default();
         let t     = Erc6909::from(&vm);
-        let alice = Address::new([0xAA;20]);
-        let bob   = Address::new([0xBB;20]);
+        let owner = Address::new([0xAA;20]);
+        let recipient   = Address::new([0xBB;20]);
         let id    = U256::from(1u64);
-        (t, vm, alice, bob, id)
+        (t, vm, owner, recipient, id)
     }
 
     #[motsu::test]
@@ -273,35 +275,35 @@ mod tests {
 
     #[motsu::test]
     fn burn_underflow_reverts() {
-        let (mut t, _, alice, _, id) = fresh_core();
-        let res = t.burn(alice, alice, id, U256::from(1u64));
+        let (mut t, _, owner, _, id) = fresh_core();
+        let res = t.burn(owner, owner, id, U256::from(1u64));
         assert_eq!(res, Err(Error::InsufficientBalance));
     }
 
     #[motsu::test]
     fn approve_zero_address_reverts() {
-        let (mut t, _, alice, _, id) = fresh_core();
+        let (mut t, _, owner, _, id) = fresh_core();
         let zero = Address::new([0u8;20]);
-        let res = t.approve(alice, zero, id, U256::from(1u64));
+        let res = t.approve(owner, zero, id, U256::from(1u64));
         assert_eq!(res, Err(Error::InvalidApprover));
     }
 
     #[motsu::test]
     fn transfer_zero_amount_ok() {
-        let (mut t, _, alice, bob, id) = fresh_core();
-        t.mint(alice, alice, id, U256::from(10u64)).unwrap();
-        assert!(t.transfer(alice, bob, id, U256::ZERO).unwrap());
+        let (mut t, _, owner, recipient, id) = fresh_core();
+        t.mint(owner, owner, id, U256::from(10u64)).unwrap();
+        assert!(t.transfer(owner, recipient, id, U256::ZERO).unwrap());
     }
 
     #[motsu::test]
     fn supply_tracks_total() {
-        let (_, vm, alice, _, id) = fresh_core();
+        let (_, vm, owner, _, id) = fresh_core();
         let mut sup = Erc6909Supply::from(&vm);
-        // mint 7 for Alice
-        sup.mint(alice, alice, id, U256::from(7u64)).unwrap();
+        // mint 7 for owner
+        sup.mint(owner, owner, id, U256::from(7u64)).unwrap();
         assert_eq!(sup.total_supply(id), U256::from(7u64));
         // burn 3
-        sup.burn(alice, alice, id, U256::from(3u64)).unwrap();
+        sup.burn(owner, owner, id, U256::from(3u64)).unwrap();
         assert_eq!(sup.total_supply(id), U256::from(4u64));
     }
 
@@ -309,9 +311,9 @@ mod tests {
     fn metadata_round_trip() {
         let (_, vm, _, _, id) = fresh_core();
         let mut meta = Erc6909MetadataUri::from(&vm);
-        let alice = Address::new([0xAA;20]);
+        let owner = Address::new([0xAA;20]);
         // only nonzero caller can set
-        assert_eq!( meta.set_token_uri(alice, id, b"hello".to_vec()),
+        assert_eq!( meta.set_token_uri(owner, id, b"hello".to_vec()),
                     Ok(true) );
         assert_eq!( meta.token_uri(id), b"hello".to_vec() );
     }
