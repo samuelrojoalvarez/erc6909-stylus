@@ -19,8 +19,6 @@ use super::{
     traits::{IErc6909, IErc6909Burnable, IErc6909Mintable},
 };
 
-// use stylus_sdk::testing::TestVM;
-
 
 /// Core ERC-6909 (no supply tracking), single-ID multi-token standard.
 ///
