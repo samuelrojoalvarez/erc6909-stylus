@@ -17,20 +17,21 @@ use openzeppelin_stylus::token::erc6909::traits::{
 
 fn main() {
     let vm = TestVM::default();
-    let alice = Address::new([0xAA; 20]);
+    let owner = Address::new([0xAA; 20]);
     let id    = U256::from(42u64);
     let amount = U256::from(100u64);
+    
 
     // ── Supply extension ───────────────────────────────
     let mut supply = Erc6909Supply::from(&vm);
-    supply.mint(alice, alice, id, amount).unwrap();
+    supply.mint(owner, owner, id, amount).unwrap();
     assert_eq!(supply.total_supply(id), amount);
     println!(" ✔ total supply = {}", supply.total_supply(id));
 
     // ── Metadata extension ────────────────────────────
     let mut uri_ext = Erc6909MetadataUri::from(&vm);
     let uri = b"https://example.com/42".to_vec();
-    uri_ext.set_token_uri(alice, id, uri.clone()).unwrap();
+    uri_ext.set_token_uri(owner, id, uri.clone()).unwrap();
     assert_eq!(uri_ext.token_uri(id), uri);
     println!(" ✔ metadata URI = {:?}", uri_ext.token_uri(id));
 
@@ -44,3 +45,5 @@ fn main() {
 
     println!("✅ all three ERC-6909 extensions example OK");
 }
+
+

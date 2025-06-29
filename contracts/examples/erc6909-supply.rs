@@ -16,8 +16,8 @@ fn main() {
     // 2) instantiate our extension-backed contract
     let mut token = Erc6909Supply::from(&vm);
 
-    // 3) a test address (Alice)
-    let alice = Address::new([0xAA; 20]);
+    // 3) a test address (owner)
+    let owner = Address::new([0xAA; 20]);
 
     // 4) prepare ID and amount
     let id     = U256::from_str("42").unwrap();
@@ -25,9 +25,9 @@ fn main() {
 
     // 5) mint and check total supply
     //    — caller = alice, recipient = alice
-    token.mint(alice, alice, id, amount).unwrap();
+    token.mint(owner, owner, id, amount).unwrap();
     assert_eq!(token.total_supply(id), amount);
 
-    println!("Alice total supply for ID {} is {}", id, token.total_supply(id));
+    println!("Owner total supply for ID {} is {}", id, token.total_supply(id));
     println!("✅ erc6909-supply example OK");
 }
