@@ -16,21 +16,21 @@ A composite MyToken aggregates these components into a single contract.
 
 ## Design Goals
 
-1. Gas/Efficiency: Leverage #[storage]‐generated accessors, minimal loops, and checked arithmetic.
+**1. Gas/Efficiency:** Leverage #[storage]‐generated accessors, minimal loops, and checked arithmetic.
 
-2. Modularity: Core + orthogonal extensions that can be mixed & matched.
+**2. Modularity: **Core + orthogonal extensions that can be mixed & matched.
 
-3. Rust‐Native Ergonomics: Clear traits (IErc6909, IErc6909Supply, etc.), no unsafe, and no‐std compatibility.
+**3. Rust‐Native Ergonomics:** Clear traits (IErc6909, IErc6909Supply, etc.), no unsafe, and no‐std compatibility.
 
-4. Testability: Use stylus_test::TestVM for isolated unit tests; migrate to motsu::test for WASM execution.
+**4. Testability:** Use stylus_test::TestVM for isolated unit tests; migrate to motsu::test for WASM execution.
 
-5. Extensibility: Future extensions (e.g. Role, Freeze) can follow the same pattern.
+**5. Extensibility:** Future extensions (e.g. Role, Freeze) can follow the same pattern.
 
 ## Architecture
 
 **Core:** Erc6909
 
-- StorageLayout:
+-** StorageLayout:**
 
     - balances: Map<Owner, Map<Id, Uint<256>>>
 
@@ -38,7 +38,7 @@ A composite MyToken aggregates these components into a single contract.
 
     - operator_approvals: Map<Owner, Map<Operator, bool>>
 
-- API (trait IErc6909):
+- **API (trait IErc6909)**:
 
     - balance_of(owner, id)
 
@@ -54,7 +54,7 @@ A composite MyToken aggregates these components into a single contract.
 
     - transfer_from(caller, from, to, id, amount)
 
-- Internal Hooks: _update, _mint, _burn for transfers, minting, and burning.
+- **Internal Hooks:** _update, _mint, _burn for transfers, minting, and burning.
 
 **Supply Extension: **Erc6909Supply
 
