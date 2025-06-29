@@ -103,7 +103,8 @@ A composite `MyToken` aggregates these components into a single contract.
 
 ## **Testing Strategy**
 
-- **Unit Tests (Native):** -->  **`$pwd`:**  `[/contracts/src/token/erc6909/erc6909.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/erc6909.rs)'
+- **Unit Tests (Native):** -->  **`$pwd`:** `[/contracts/src/token/erc6909/erc6909.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/erc6909.rs)'.
+  
 `#[cfg(test)]` modules driven by `TestVM`, using `motsu::test` for consistency.
 
 - **Examples & Integration:** **`$pwd`:** `[/contracts/examples/](https://github.com/samuelrojoalvarez/erc6909-stylus/tree/main/contracts/examples)' :
