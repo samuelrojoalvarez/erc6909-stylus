@@ -17,10 +17,16 @@ alloy-sol-macro-input.workspace = true
 stylus-sdk.workspace = true
 keccak-const.workspace = true
 openzeppelin-stylus-proc.workspace = true
+# ...
+tiny-keccak = { version = "2.0", features = ["keccak"] } 
+
 
 [dev-dependencies]
 alloy-primitives = { workspace = true, features = ["arbitrary"] }
-motsu.workspace = true
+motsu     = { workspace = true }
+motsu-proc = { workspace = true }
+criterion = "0.4"
+
 
 [features]
 reentrant = ["stylus-sdk/reentrant"]
@@ -28,6 +34,29 @@ export-abi = ["stylus-sdk/export-abi"]
 
 [lib]
 crate-type = ["lib"]
+# proc-macro = true
+
 
 [lints]
 workspace = true
+
+# BENCHES
+[[bench]]
+name = "erc6909_core"
+path = "benches/erc6909_core.rs"
+harness = false
+
+[[bench]]
+name = "erc6909_supply"
+path = "benches/erc6909_supply.rs"
+harness = false
+
+[[bench]]
+name = "erc6909_metadata"
+path = "benches/erc6909_metadata.rs"
+harness = false
+
+[[bench]]
+name = "erc6909_enumerable"
+path = "benches/erc6909_enumerable.rs"
+harness = false

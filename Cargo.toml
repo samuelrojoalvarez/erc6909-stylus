@@ -85,6 +85,10 @@ all = "warn"
 [workspace.dependencies]
 # Stylus SDK related
 stylus-sdk = "=0.9.0"
+# Pull in the Motsu crates from the unpacked folder
+motsu     = { version = "0.9.0", path = "/home/ubu/DEV/stylus-test-helpers-0.9.0/crates/motsu" }
+motsu-proc = { version = "0.9.0", path = "/home/ubu/DEV/stylus-test-helpers-0.9.0/crates/motsu-proc" }
+
 
 alloy = { version = "=0.7.3", features = [
   "contract",
@@ -126,8 +130,6 @@ syn = { version = "2.0.58", features = ["full"] }
 proc-macro2 = "1.0.79"
 quote = "1.0.35"
 
-motsu = "=0.9.1"
-
 # members
 openzeppelin-stylus = { path = "contracts" }
 openzeppelin-stylus-proc = { path = "contracts-proc", version = "=0.2.2" }
@@ -155,3 +157,15 @@ default = { extend-ignore-identifiers-re = [
   "[0-9a-fA-F][0-9a-fA-F]",
 ] }
 files = { extend-exclude = [] }
+
+[patch.crates-io]
+stylus-sdk = { path = "/home/ubu/DEV/stylus-sdk-rs-0.9.0/stylus-sdk" }
+# the SDK depends on stylus-core & stylus-proc, override those too:
+stylus-core = { path = "/home/ubu/DEV/stylus-sdk-rs-0.9.0/stylus-core" }
+stylus-proc = { path = "/home/ubu/DEV/stylus-sdk-rs-0.9.0/stylus-proc" }
+
+# [patch.crates-io]
+# stylus-sdk = { path = "../stylus-sdk-rs-0.9.0/stylus-sdk" }
+# the SDK depends on stylus-core & stylus-proc, override those too:
+# stylus-core = { path = "../stylus-sdk-rs-0.9.0/stylus-core" }
+# stylus-proc = { path = "../stylus-sdk-rs-0.9.0/stylus-proc" }

@@ -1,0 +1,12 @@
+[package]
+name = "examples-erc6909"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+stylus-sdk          = { workspace = true }
+alloy-primitives    = { workspace = true }
+openzeppelin-stylus = { path = "../../contracts" }
+
+[lib]
+crate-type = ["cdylib"]
