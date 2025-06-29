@@ -107,8 +107,9 @@ A composite `MyToken` aggregates these components into a single contract.
 
 - **Examples & Integration:** `examples/erc6909-supply.rs`, `examples/erc6909-extensions.rs`.
 
-- **Benchmarks:** `benches/erc6909_core.rs`, `erc6909_supply.rs`, etc.
-      ```bash
+- **Benchmarks:** `benches/erc6909_core.rs`, `erc6909_supply.rs`, etc. 
+
+   ```bash
     total 36
     drwxrwxr-x 2 ubu ubu  4096 jun 26 14:19 .
     drwxrwxr-x 8 ubu ubu  4096 jun 28 03:08 ..
@@ -116,7 +117,7 @@ A composite `MyToken` aggregates these components into a single contract.
     -rw-rw-r-- 1 ubu ubu  1980 jun 28 00:05 erc6909_enumerable.rs
     -rw-rw-r-- 1 ubu ubu  1455 jun 28 00:05 erc6909_metadata.rs
     -rw-rw-r-- 1 ubu ubu  2224 jun 28 00:05 erc6909_supply.rs
-      ```
+   ```
 
 ## **Next Steps & Discussion**
 
