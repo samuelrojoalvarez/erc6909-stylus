@@ -96,9 +96,9 @@ A composite `MyToken` aggregates these components into a single contract.
     struct MyToken { core: Erc6909, supply: Erc6909Supply, metadata: Erc6909MetadataUri, enumerable: Erc6909Enumerable }
    ```
     
-    - Delegates calls to the appropriate extension.
+- Delegates calls to the appropriate extension.
         
-    - Single `from(&vm)` constructor wiring all sub‐contracts.
+- Single `from(&vm)` constructor wiring all sub‐contracts.
     
 
 ## **Testing Strategy**
