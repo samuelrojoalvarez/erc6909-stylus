@@ -28,7 +28,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 ## Architecture
 
-**Core:** Erc6909  **`$pwd`:** --> `contracts/src/erc6909/erc6909.rs`
+**Core:** Erc6909  **`$pwd`:** --> `[contracts/src/token/erc6909/erc6909.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/erc6909.rs)`
 
 - **StorageLayout:** 
 
@@ -56,7 +56,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 - **Internal Hooks:** `_update`, `_mint`, `_burn` for transfers, minting, and burning.
 
-**Supply Extension:** Erc6909Supply **`$pwd`:**--> `/contracts/src/token/erc6909/extensions/token_supply.rs`
+**Supply Extension:** Erc6909Supply **`$pwd`:**--> `[/contracts/src/token/erc6909/extensions/token_supply.rs]([url](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/token_supply.rs))`
 
   - **Tracks** `_total_supplies: Map<Id, Uint<256>>`
 
@@ -64,7 +64,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
   - **Trait:** `IErc6909Supply` with `total_supply(id)`.
 
-**Metadata Extension:** Erc6909MetadataUri  **`$pwd`:** --> `/contracts/src/token/erc6909/extensions/metadata_uri.rs`
+**Metadata Extension:** Erc6909MetadataUri  **`$pwd`:** --> `[/contracts/src/token/erc6909/extensions/metadata_uri.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/metadata_uri.rs)`
 
 - **Stores:**
 
@@ -78,7 +78,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
     - `set_token_uri(caller, id, uri)`
 
-**Enumerable Extension:** Erc6909Enumerable **`$pwd`:** --> `/contracts/src/token/erc6909/extensions/enumerable.rs`
+**Enumerable Extension:** Erc6909Enumerable **`$pwd`:** --> `[/contracts/src/token/erc6909/extensions/enumerable.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/enumerable.rs)`
 
 - **Stores:**
 
@@ -105,25 +105,25 @@ A composite `MyToken` aggregates these components into a single contract.
 
 - **Unit Tests (Native):** `#[cfg(test)]` modules driven by `TestVM`, using `motsu::test` for consistency. --> `/contracts/src/token/erc6909/erc6909.rs`
 
-- **Examples & Integration:** **`$pwd`:** `/contracts/examples/` :
+- **Examples & Integration:** **`$pwd`:** `[/contracts/examples/](https://github.com/samuelrojoalvarez/erc6909-stylus/tree/main/contracts/examples)` :
      ```bash
     total 16
     drwxrwxr-x 2 ubu ubu 4096 jun 27 23:19 .
     drwxrwxr-x 8 ubu ubu 4096 jun 28 03:08 ..
-    -rw-rw-r-- 1 ubu ubu 1923 jun 27 23:19 erc6909-extensions.rs
-    -rw-rw-r-- 1 ubu ubu 1994 jun 28 03:48 erc6909-supply.rs
+    -rw-rw-r-- 1 ubu ubu 1923 jun 27 23:19 [erc6909-extensions.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/examples/erc6909-extensions.rs)
+    -rw-rw-r-- 1 ubu ubu 1994 jun 28 03:48 [erc6909-supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/examples/erc6909-supply.rs)
    ```
 
-- **Benchmarks:** **`$pwd`:** `/contracts/benches/` : 
+- **Benchmarks:** **`$pwd`:** `[/contracts/benches/](https://github.com/samuelrojoalvarez/erc6909-stylus/tree/main/contracts/benches)` : 
 
    ```bash
     total 36
     drwxrwxr-x 2 ubu ubu  4096 jun 26 14:19 .
     drwxrwxr-x 8 ubu ubu  4096 jun 28 03:08 ..
-    -rw-rw-r-- 1 ubu ubu 13152 jun 26 18:52 erc6909_core.rs
-    -rw-rw-r-- 1 ubu ubu  1980 jun 28 00:05 erc6909_enumerable.rs
-    -rw-rw-r-- 1 ubu ubu  1455 jun 28 00:05 erc6909_metadata.rs
-    -rw-rw-r-- 1 ubu ubu  2224 jun 28 00:05 erc6909_supply.rs
+    -rw-rw-r-- 1 ubu ubu 13152 jun 26 18:52 [erc6909_core.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_core.rs)
+    -rw-rw-r-- 1 ubu ubu  1980 jun 28 00:05 [erc6909_enumerable.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_enumerable.rs)
+    -rw-rw-r-- 1 ubu ubu  1455 jun 28 00:05 [erc6909_metadata.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_metadata.rs)
+    -rw-rw-r-- 1 ubu ubu  2224 jun 28 00:05 [erc6909_supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_supply.rs)
    ```
 
 ## **Next Steps & Discussion**
