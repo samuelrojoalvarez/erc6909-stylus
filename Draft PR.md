@@ -72,7 +72,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
     - `uri_byte: Map<Id, Map<Idx, Uint<8>>>`
 
-- API (trait IErc6909MetadataUri):
+- **API (trait IErc6909MetadataUri):**
 
     - `token_uri(id): Vec<u8>`
 
@@ -89,14 +89,15 @@ A composite `MyToken` aggregates these components into a single contract.
   - **Behavior:** `_record_id(id)` on first mint; trait `IErc6909Enumerable` with `total_ids()` & `id_by_index()`.
 
 **Composite Token:** `MyToken`
-``bash
-#[storage]
-struct MyToken { core: Erc6909, supply: Erc6909Supply, metadata: Erc6909MetadataUri, enumerable: Erc6909Enumerable }
 
-- Delegates calls to the appropriate extension.
-
-- Single `from(&vm)` constructor wiring all sub‐contracts.
-```
+    ``bash
+    #[storage]
+    struct MyToken { core: Erc6909, supply: Erc6909Supply, metadata: Erc6909MetadataUri, enumerable: Erc6909Enumerable }
+    
+    - Delegates calls to the appropriate extension.
+    
+    - Single `from(&vm)` constructor wiring all sub‐contracts.
+    ```
 
 **Testing Strategy**
 
