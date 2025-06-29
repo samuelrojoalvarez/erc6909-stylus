@@ -48,7 +48,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
     - `approve(caller, spender, id, amount)`
 
-    - set_operator(caller, operator, approved)
+    - `set_operator(caller, operator, approved)`
 
     - `transfer(caller, to, id, amount)`
 
