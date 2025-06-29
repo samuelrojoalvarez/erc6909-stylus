@@ -30,7 +30,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 **Core:** Erc6909
 
-- ** StorageLayout**: 
+- **StorageLayout:** 
 
     - `balances: Map<Owner, Map<Id, Uint<256>>>`
 
