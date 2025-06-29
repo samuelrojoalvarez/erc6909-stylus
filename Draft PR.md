@@ -91,8 +91,6 @@ A composite `MyToken` aggregates these components into a single contract.
 ## **Composite Token:** `MyToken`
 
    ```bash
-   # Get the latest TriggerId and show the result via `script/ShowResult.s.sol`
-   make show-result
 
     #[storage]
     struct MyToken { core: Erc6909, supply: Erc6909Supply, metadata: Erc6909MetadataUri, enumerable: Erc6909Enumerable }
