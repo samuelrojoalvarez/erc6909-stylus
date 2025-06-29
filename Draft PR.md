@@ -90,7 +90,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 ## **Composite Token:** `MyToken`
 
-    ```bash
+    ```
         #[storage]
         struct MyToken { core: Erc6909, supply: Erc6909Supply, metadata: Erc6909MetadataUri, enumerable: Erc6909Enumerable }
         
