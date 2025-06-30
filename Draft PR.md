@@ -139,3 +139,13 @@ A composite `MyToken` aggregates these components into a single contract.
 - **Documentation:** Flesh out docs/EIP-6909.md with storage layout comparisons vs. Solidity.
 
 - **Security Review:** Edge cases for overflow, large URI sizes, and reentrancy.
+
+
+🛑 ## **Perceived Limitations**
+- **Enumeration is manual:** Consumers must remember to call _record_id(id) on every mint. If you forget, your list is incomplete.
+
+- **No “composite” wrapper:** We ended up removing the all-in-one MyToken composite because of complexity wiring up Host generics. That means you still need to manually stitch extensions together in each example/test.
+
+- **Gas cost:** Tracking supply and enumeration in the same _update call is convenient, but it touches multiple storage slots per transfer/mint/burn. In a heavily-used contract this could push you into higher gas brackets.
+
+- **Limited metadata:** We only store token-URI bytes. More advanced metadata schemes (baseURI + tokenID concatenation, on-chain JSON blobs, royalty info) are not covered yet.
