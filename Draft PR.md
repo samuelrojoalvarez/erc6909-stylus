@@ -143,7 +143,7 @@ The new generated files are:
 - [/contracts/benches/erc6909_metadata.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_metadata.rs)
 - [/contracts/benches/erc6909_supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_supply.rs)
 - [/contracts/examples/erc6909-extensions.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/examples/erc6909-extensions.rs)
-- [contracts/examples/erc6909-supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/examples/erc6909-supply.rs)
+- [/contracts/examples/erc6909-supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/examples/erc6909-supply.rs)
 
 ## **Next Steps & Discussion**
 
