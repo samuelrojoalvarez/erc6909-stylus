@@ -152,25 +152,25 @@ A composite `MyToken` aggregates these components into a single contract.
 
 ## 🚀 **Future Improvements**
 **1. Re-introduce a generic CompositeToken**
-    - Tackle the Host/TestVM type mismatch by standardizing on WasmVM or by adding a blanket impl Host for VM in your crate. Then you can expose one #[storage] struct MyToken that bundles core + all extensions.
+- Tackle the Host/TestVM type mismatch by standardizing on WasmVM or by adding a blanket impl Host for VM in your crate. Then you can expose one #[storage] struct MyToken that bundles core + all extensions.
 
 **2. Lazy or packed enumeration**
 
-    - Rather than pushing every new ID into a vector, consider a two-phase indexing: e.g. keep a “seen” bitmap and build a flat list only when needed. This saves gas on every mint.
+- Rather than pushing every new ID into a vector, consider a two-phase indexing: e.g. keep a “seen” bitmap and build a flat list only when needed. This saves gas on every mint.
 
 **3. ERC-165 introspection**
-    - Auto-register each extension’s interface ID in supports_interface, so off-chain tooling can discover at runtime that your contract supports enumeration, metadata, supply, etc.
+- Auto-register each extension’s interface ID in supports_interface, so off-chain tooling can discover at runtime that your contract supports enumeration, metadata, supply, etc.
 
 **4. Property-based & fuzz testing**
 
-    - We’ve covered the happy & error paths in our unit tests, but adding motsu-driven arbitrary tests or integration-style fuzzing (e.g. random sequences of mints/transfers/burns) would bolster confidence in corner-cases.
+- We’ve covered the happy & error paths in our unit tests, but adding motsu-driven arbitrary tests or integration-style fuzzing (e.g. random sequences of mints/transfers/burns) would bolster confidence in corner-cases.
 
 **5. On-chain performance benchmarking**
 
-    - Use Stylus’s WASM-based CI runner or a local Arbitrum dev‐node to measure actual gas/ink costs of key operations, then refactor the storage layout (e.g. use StorageArray or packed struct fields) where it most hurts.
+- Use Stylus’s WASM-based CI runner or a local Arbitrum dev‐node to measure actual gas/ink costs of key operations, then refactor the storage layout (e.g. use StorageArray or packed struct fields) where it most hurts.
 
 **6. Extended metadata & royalties**
 
-    - Build an ERC-6909 extension for royalty info (mirroring ERC-2981) or on-chain JSON storage (e.g. JSON pointers into a merkle-tree), so you can support richer metadata without blowing out per-token storage too much.
+- Build an ERC-6909 extension for royalty info (mirroring ERC-2981) or on-chain JSON storage (e.g. JSON pointers into a merkle-tree), so you can support richer metadata without blowing out per-token storage too much.
 
 
