@@ -141,7 +141,7 @@ A composite `MyToken` aggregates these components into a single contract.
 - **Security Review:** Edge cases for overflow, large URI sizes, and reentrancy.
 
 
-🛑 ## **Perceived Limitations**
+## 🛑 **Perceived Limitations**
 - **Enumeration is manual:** Consumers must remember to call _record_id(id) on every mint. If you forget, your list is incomplete.
 
 - **No “composite” wrapper:** We ended up removing the all-in-one MyToken composite because of complexity wiring up Host generics. That means you still need to manually stitch extensions together in each example/test.
