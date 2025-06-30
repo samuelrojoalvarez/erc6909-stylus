@@ -132,6 +132,17 @@ A composite `MyToken` aggregates these components into a single contract.
     -rw-rw-r-- 1 ubu ubu  2224 jun 28 00:05 erc6909_supply.rs
    ```
 
+
+The new generated files are:
+-[/contracts/src/token/erc6909/erc6909.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/erc6909.rs)
+-[/contracts/src/token/erc6909/extensions/token_supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/token_supply.rs)
+-[/contracts/src/token/erc6909/extensions/metadata_uri.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/metadata_uri.rs)
+-[/contracts/src/token/erc6909/extensions/enumerable.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/enumerable.rs)
+-[/contracts/benches/erc6909_core.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_core.rs)
+-[/contracts/benches/erc6909_enumerable.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_enumerable.rsurl)
+-[/contracts/benches/erc6909_metadata.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_metadata.rs)
+-[/contracts/benches/erc6909_supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/benches/erc6909_supply.rs)
+
 ## **Next Steps & Discussion**
 
 - **WASM Test Harness:** Migrate to wasm32-wasi + motsu for on‐chain parity.
