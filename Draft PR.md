@@ -150,7 +150,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 - **Limited metadata:** We only store token-URI bytes. More advanced metadata schemes (baseURI + tokenID concatenation, on-chain JSON blobs, royalty info) are not covered yet.
 
-🚀 **Future Improvements**
+## 🚀 **Future Improvements**
 **1. Re-introduce a generic CompositeToken**
     - Tackle the Host/TestVM type mismatch by standardizing on WasmVM or by adding a blanket impl Host for VM in your crate. Then you can expose one #[storage] struct MyToken that bundles core + all extensions.
 
