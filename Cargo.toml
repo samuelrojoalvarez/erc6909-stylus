@@ -160,6 +160,6 @@ files = { extend-exclude = [] }
 
 [patch.crates-io]
 stylus-sdk = { path = "../stylus-sdk-rs-0.9.0/stylus-sdk" }
-# the SDK depends on stylus-core & stylus-proc, override those too:
+# the SDK depends on stylus-core & stylus-proc, that's why override these too:
 stylus-core = { path = "../stylus-sdk-rs-0.9.0/stylus-core" }
 stylus-proc = { path = "../stylus-sdk-rs-0.9.0/stylus-proc" }
