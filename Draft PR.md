@@ -26,7 +26,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
 **5. Extensibility:** Future extensions (e.g. Role, Freeze) can follow the same pattern.
 
-## Architecture
+## High Level Architecture
 
 ![image](https://github.com/user-attachments/assets/71022608-7b00-4ed3-8727-5041f7e88696)
 
