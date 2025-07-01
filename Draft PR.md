@@ -171,9 +171,9 @@ The new generated files are:
    ```
   **Output Error:**
     ```bash
-     Compiling stylus-test v0.9.0
+       Compiling stylus-test v0.9.0
        Compiling stylus-sdk v0.9.0
-    error: Broken pipe (os error 32)
+    **error:** Broken pipe (os error 32)
     warning: build failed, waiting for other jobs to finish...
     error: could not compile `stylus-sdk` (lib) due to 1 previous error
     2025-07-01T00:12:07.355960Z ERROR cargo_tarpaulin: Failed to compile tests!
