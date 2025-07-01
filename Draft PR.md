@@ -68,7 +68,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
   - **Trait:** `IErc6909Supply` with `total_supply(id)`.
 
-**Metadata Extension:** Erc6909MetadataUri  **-->** **` $pwd`:** [/contracts/src/token/erc6909/extensions/metadata_uri.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/metadata_uri.rs)
+**Metadata Extension:** Erc6909MetadataUri  **-->** **` $ pwd`:** [/contracts/src/token/erc6909/extensions/metadata_uri.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/metadata_uri.rs)
 
 - **Stores:**
 
@@ -82,7 +82,7 @@ A composite `MyToken` aggregates these components into a single contract.
 
     - `set_token_uri(caller, id, uri)`
 
-**Enumerable Extension:** Erc6909Enumerable **-->** **` $pwd`:** [/contracts/src/token/erc6909/extensions/enumerable.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/enumerable.rs)
+**Enumerable Extension:** Erc6909Enumerable **-->** **` $ pwd`:** [/contracts/src/token/erc6909/extensions/enumerable.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/src/token/erc6909/extensions/enumerable.rs)
 
 - **Stores:**
 
