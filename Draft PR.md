@@ -196,6 +196,19 @@ The new generated files are:
    ```
 
 
+**Checking with** ´cargo audit` we discover potencial unmaintained problems like:
+    ```bash
+Crate:    proc-macro-error
+Version:   1.0.4
+Warning:   unmaintained
+Title:     proc-macro-error is unmaintained
+Date:      2024-09-01
+ID:        RUSTSEC-2024-0370
+URL:       https://rustsec.org/advisories/RUSTSEC-2024-0370
+    ```
+Possible Alternativve to **Crate:    proc-macro-error** --> **[proc-macro-error2 v2.0.1](https://crates.io/crates/proc-macro-error2)** or **[manyhow v0.11.4](https://crates.io/crates/manyhow)**
+     
+
 ## 🚀 **Future Improvements**
 **1. Re-introduce a generic CompositeToken**
 - Tackle the Host/TestVM type mismatch by standardizing on WasmVM or by adding a blanket impl Host for VM in your crate. Then you can expose one #[storage] struct MyToken that bundles core + all extensions.
