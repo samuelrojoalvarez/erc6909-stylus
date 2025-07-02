@@ -206,8 +206,27 @@ The new generated files are:
     ID:        RUSTSEC-2024-0370
     URL:       https://rustsec.org/advisories/RUSTSEC-2024-0370
     ```
-    - Possible Alternativve to **Crate:    proc-macro-error** --> **[proc-macro-error2 v2.0.1](https://crates.io/crates/proc-macro-error2)** or **[manyhow v0.11.4](https://crates.io/crates/manyhow)**
-     
+  
+    ```bash
+    Crate:     derivative
+    Version:   2.2.0
+    Warning:   unmaintained
+    Title:     `derivative` is unmaintained; consider using an alternative
+    Date:      2024-06-26
+    ID:        RUSTSEC-2024-0388
+    URL:       https://rustsec.org/advisories/RUSTSEC-2024-0388
+    ```
+
+    ```bash
+    Crate:     paste
+    Version:   1.0.15
+    Warning:   unmaintained
+    Title:     paste - no longer maintained
+    Date:      2024-10-07
+    ID:        RUSTSEC-2024-0436
+    URL:       https://rustsec.org/advisories/RUSTSEC-2024-0436
+    ```
+      
 
 ## 🚀 **Future Improvements**
 **1. Re-introduce a generic CompositeToken**
