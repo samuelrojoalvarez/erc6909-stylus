@@ -196,7 +196,7 @@ The new generated files are:
    ```
 
 
-- **Checking with** `cargo audit` we discover potencial unmaintained problems like:
+- **Checking with** `cargo audit` we discover potencial `unmaintained problems` like:
     ```bash
     Crate:    proc-macro-error
     Version:   1.0.4
