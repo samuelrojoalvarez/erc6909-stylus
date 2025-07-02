@@ -1,0 +1,23 @@
+
+[tasks.update]
+description = "Update Cargo.lock to latest compatible versions"
+command     = "cargo"
+args        = ["update"]
+
+[tasks.build]
+description = "Compile the entire workspace"
+command     = "cargo"
+args        = ["build"]
+
+[tasks.test]
+description = "Run only the openzeppelin-stylus package tests"
+command     = "cargo"
+args        = ["test", "-p", "openzeppelin-stylus"]
+
+[tasks.build-flow]
+description  = "Update, build, then test openzeppelin-stylus"
+dependencies = ["update", "build", "test"]
+
+[config]
+# Make 'build-flow' the default if you just run 'cargo make'
+default = "build-flow"
