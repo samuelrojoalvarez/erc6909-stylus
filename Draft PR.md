@@ -146,11 +146,10 @@ The new generated files are:
 - [/contracts/examples/erc6909-supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/examples/erc6909-supply.rs)
 
 ## Tests:
-**In order to execute the elaborate tests:**
+**In order to execute the elaborated tests, It's needed to access to `contracts`folder and run the `Makefile.toml`:**
    ```bash
-    cargo update
-    cargo build
-    cargo test -p openzeppelin-stylus
+    cd contracts
+    cargo make build-flow
    ```
 
 ## **Next Steps & Discussion**
