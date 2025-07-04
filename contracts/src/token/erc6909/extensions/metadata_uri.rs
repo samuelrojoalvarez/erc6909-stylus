@@ -78,3 +78,40 @@ impl IErc6909MetadataUri for Erc6909MetadataUri {
     }
 }
 
+//Added FRIDAY
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use alloy_primitives::{Address, U256};
+    use stylus_sdk::testing::TestVM;
+
+    /// Instantiate the metadata extension out of storage so we can call it like a normal Rust struct.
+    fn fresh_meta() -> Erc6909MetadataUri {
+        let vm = TestVM::default();
+        Erc6909MetadataUri::from(&vm)
+    }
+
+    #[test]
+    fn set_and_get_token_uri() {
+        let mut ext = fresh_meta();
+        let caller = Address::new([0xAA; 20]);
+        let id     = U256::from(99u64);
+        let uri    = b"https://oz.io/99".to_vec();
+
+        // should succeed
+        ext.set_token_uri(caller, id, uri.clone()).unwrap();
+        // and return the same bytes
+        assert_eq!(ext.token_uri(id), uri);
+    }
+
+    #[test]
+    fn set_reverts_for_zero_caller() {
+        let mut ext = fresh_meta();
+        let zero = Address::new([0u8; 20]);
+
+        // zero‐address caller must Err
+        let err = ext.set_token_uri(zero, U256::ONE, b"foo".to_vec());
+        assert_eq!(err, Err(Error::InvalidApprover));
+    }
+}
