@@ -142,8 +142,8 @@ The new generated files are:
 - [/contracts/benches/erc6909_enumerable.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/benches/src/erc6909_enumerable.rs)
 - [/contracts/benches/erc6909_metadata.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/benches/src/erc6909_metadata.rs)
 - [/contracts/benches/erc6909_supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/benches/src/erc6909_supply.rs)
-- [/contracts/examples/erc6909-extensions.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/examples/erc6909-extensions.rs)
-- [/contracts/examples/erc6909-supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/examples/erc6909-supply.rs)
+- [/benches/src/examples/erc6909-extensions.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/benches/src/examples/erc6909-extensions.rs)
+- [/benches/src/examples/erc6909-supply.rs](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/benches/src/examples/erc6909-supply.rs)
 
 ## Tests:
 In order to execute the elaborated tests, It's needed to access to [contracts](https://github.com/samuelrojoalvarez/erc6909-stylus/tree/main/contracts) folder and run the **[Makefile.toml](https://github.com/samuelrojoalvarez/erc6909-stylus/blob/main/contracts/Makefile.toml)** :
