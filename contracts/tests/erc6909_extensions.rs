@@ -1,36 +1,30 @@
-// examples/erc6909-extensions.rs
-use stylus_sdk::testing::TestVM;
 use alloy_primitives::{Address, U256};
-
 // core + the three extensions
-use openzeppelin_stylus::token::erc6909::{
-    extensions::{
-        token_supply::Erc6909Supply,
-        metadata_uri::Erc6909MetadataUri,
-        enumerable::Erc6909Enumerable,
-    },
+use openzeppelin_stylus::token::erc6909::extensions::{
+    enumerable::Erc6909Enumerable, metadata_uri::Erc6909MetadataUri,
+    token_supply::Erc6909Supply,
 };
 use openzeppelin_stylus::token::erc6909::traits::{
-    IErc6909Mintable, IErc6909Supply,
-    IErc6909MetadataUri, IErc6909Enumerable,
+    IErc6909Enumerable, IErc6909MetadataUri, IErc6909Mintable, IErc6909Supply,
 };
+use stylus_sdk::testing::TestVM;
 
 fn main() {
-    let vm     = TestVM::default();
-    let alice  = Address::new([0xAA; 20]);
-    let id     = U256::from(42u64);
+    let vm = TestVM::default();
+    let owner = Address::new([0xAA; 20]);
+    let id = U256::from(42u64);
     let amount = U256::from(100u64);
 
     // ── Supply extension ───────────────────────────────
     let mut supply = Erc6909Supply::from(&vm);
-    supply.mint(alice, alice, id, amount).unwrap();
+    supply.mint(owner, owner, id, amount).unwrap();
     assert_eq!(supply.total_supply(id), amount);
     println!(" ✔ total supply = {}", supply.total_supply(id));
 
     // ── Metadata extension ────────────────────────────
     let mut uri_ext = Erc6909MetadataUri::from(&vm);
     let uri = b"https://example.com/42".to_vec();
-    uri_ext.set_token_uri(alice, id, uri.clone()).unwrap();
+    uri_ext.set_token_uri(owner, id, uri.clone()).unwrap();
     assert_eq!(uri_ext.token_uri(id), uri);
     println!(" ✔ metadata URI = {:?}", uri_ext.token_uri(id));
 
