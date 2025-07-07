@@ -17,6 +17,7 @@ alloy-sol-macro-input.workspace = true
 stylus-sdk.workspace = true
 keccak-const.workspace = true
 openzeppelin-stylus-proc.workspace = true
+stylus-sdk = { version = "=0.9.0", default-features = false, features = ["stylus-test"] }
 # ...
 tiny-keccak = { version = "2.0", features = ["keccak"] } 
 
@@ -29,8 +30,12 @@ criterion = "0.4"
 
 
 [features]
+stylus-test = ["stylus-sdk/stylus-test"]
 reentrant = ["stylus-sdk/reentrant"]
 export-abi = ["stylus-sdk/export-abi"]
+debug = ["stylus-sdk/debug"]
+metadata_uri = []
+erc6909 = []
 
 [lib]
 crate-type = ["lib"]
