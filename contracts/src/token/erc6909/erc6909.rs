@@ -224,7 +224,11 @@ impl IErc6909Burnable for Erc6909 {
 }
 
 
-// Unit TESTS
+
+// ——————————————————————————————————————————————————————————————————————————
+// motsu-driven Unit tests
+// Run : cargo test -p openzeppelin-stylus --features stylus-test
+// ——————————————————————————————————————————————————————————————————————————
 #[cfg(test)]
 mod tests {
     use super::*;
