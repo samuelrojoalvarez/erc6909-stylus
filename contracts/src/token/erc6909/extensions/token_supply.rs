@@ -148,7 +148,7 @@ mod tests {
     use motsu::prelude::*;
 
     // Tell Motsu how to snapshot/rollback this pure-storage type
-    #[cfg(not(feature = "erc6909"))]
+    #[cfg_attr(feature = "token_supply", entrypoint)]
     unsafe impl stylus_sdk::testing::TopLevelStorage for Erc6909Supply {}
 
     /// Helper to get a fresh `Contract<Erc6909Supply>` and a random account
