@@ -142,6 +142,12 @@ impl MyToken {
     }
 }
 
+
+
+// ——————————————————————————————————————————————————————————————————————————
+// motsu-driven Unit tests
+// Run : cargo test -p openzeppelin-stylus --features stylus-test
+// ——————————————————————————————————————————————————————————————————————————
 #[cfg(test)]
 mod tests {
     use super::*;
