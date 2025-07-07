@@ -58,8 +58,6 @@ impl IErc6909Enumerable for Erc6909Enumerable {
     }
 }
 
-//Added FRIDAY
-
 
 #[cfg(test)]
 mod tests {
