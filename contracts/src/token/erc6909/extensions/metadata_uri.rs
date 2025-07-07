@@ -205,7 +205,7 @@ mod motsu_tests {
     use motsu::prelude::*;
 
     // let Motsu know how to snapshot & rollback storage
-    #[cfg(not(feature = "motsu"))]
+    #[cfg_attr(feature = "metadata_uri", entrypoint)]
     unsafe impl stylus_sdk::testing::TopLevelStorage for Erc6909MetadataUri {}
 
     fn fresh_contract() -> Contract<Erc6909MetadataUri> {
