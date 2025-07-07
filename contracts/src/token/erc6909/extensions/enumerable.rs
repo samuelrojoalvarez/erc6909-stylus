@@ -101,60 +101,53 @@ mod tests {
 // Run the tests: cargo test -p openzeppelin-stylus --features stylus-test
 // ——————————————————————————————————————————————————————————————————————————
 #[cfg(test)]
-mod tests {
+mod motsu_tests {
     use super::*;
-    use alloy_primitives::{Address, U256};
+    use alloy_primitives::U256;
     use stylus_sdk::testing::TestVM;
     use motsu::prelude::*;
 
-    // Tell Motsu how to snapshot/rollback this pure-storage type
+    // Tell Motsu how to snapshot/rollback this pure‐storage type
     #[cfg(not(feature = "erc6909"))]
-    unsafe impl stylus_sdk::testing::TopLevelStorage for Erc6909Supply {}
+    unsafe impl stylus_sdk::testing::TopLevelStorage for Erc6909Enumerable {}
 
-    /// Helper to get a fresh `Contract<Erc6909Supply>` and a random account
-    fn fresh() -> Contract<Erc6909Supply> {
-        Contract::<Erc6909Supply>::new(&TestVM::default())
+    /// Helper to get a fresh `Contract<Erc6909Enumerable>`
+    fn fresh() -> Contract<Erc6909Enumerable> {
+        Contract::<Erc6909Enumerable>::new(&TestVM::default())
     }
 
     #[motsu::test]
-    fn initial_total_is_zero(mut c: Contract<Erc6909Supply>, owner: Address) {
-        let id = U256::from(1u64);
-        // Nothing minted yet → total_supply must be zero
-        assert_eq!(c.total_supply(id), U256::ZERO);
+    fn initial_total_is_zero(mut c: Contract<Erc6909Enumerable>) {
+        // With no IDs recorded, we expect zero
+        assert_eq!(c.total_ids(), U256::ZERO);
     }
 
     #[motsu::test]
-    fn mint_increases_total(mut c: Contract<Erc6909Supply>, owner: Address) {
-        let id     = U256::from(7u64);
-        let amount = U256::from(42u64);
-
-        // Mint `amount` to `owner`
-        c.mint(owner, owner, id, amount).motsu_unwrap();
-
-        // Now the total supply for `id` should be exactly `amount`
-        assert_eq!(c.total_supply(id), amount);
+    fn record_zero_id_is_ignored(mut c: Contract<Erc6909Enumerable>) {
+        // Recording the zero‐ID must do nothing
+        c._record_id(U256::ZERO);
+        assert_eq!(c.total_ids(), U256::ZERO);
     }
 
     #[motsu::test]
-    fn burn_decreases_total(mut c: Contract<Erc6909Supply>, owner: Address) {
-        let id         = U256::from(10u64);
-        let minted_amt = U256::from(50u64);
-        let burn_amt   = U256::from(15u64);
+    fn tracks_unique_ids(mut c: Contract<Erc6909Enumerable>) {
+        // simulate: record [10, 20, 10, 30, 0]
+        for &x in &[10u64, 20, 10, 30, 0] {
+            c._record_id(U256::from(x));
+        }
 
-        // Mint then burn
-        c.mint(owner, owner, id, minted_amt).motsu_unwrap();
-        c.burn(owner, owner, id, burn_amt).motsu_unwrap();
-
-        // Remaining supply = minted_amt - burn_amt
-        assert_eq!(c.total_supply(id), minted_amt - burn_amt);
+        // duplicates & zero should have been ignored
+        assert_eq!(c.total_ids(), U256::from(3u64));
+        assert_eq!(c.id_by_index(U256::ZERO),     U256::from(10u64));
+        assert_eq!(c.id_by_index(U256::from(1u64)), U256::from(20u64));
+        assert_eq!(c.id_by_index(U256::from(2u64)), U256::from(30u64));
     }
 
     #[motsu::test]
-    fn burn_without_mint_reverts(mut c: Contract<Erc6909Supply>, owner: Address) {
-        let id = U256::from(99u64);
-
-        // Trying to burn an ID that was never minted should revert
-        c.burn(owner, owner, id, U256::ONE)
-            .motsu_unwrap_err();
+    fn out_of_bounds_index_returns_zero(mut c: Contract<Erc6909Enumerable>) {
+        // Record a single ID
+        c._record_id(U256::from(55u64));
+        // Asking at index 5 (which doesn't exist) must give zero
+        assert_eq!(c.id_by_index(U256::from(5u64)), U256::ZERO);
     }
 }
