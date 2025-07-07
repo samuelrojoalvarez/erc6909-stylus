@@ -133,7 +133,7 @@ impl IErc6909Burnable for Erc6909Supply {
         Ok(())
     }
 }
-//Added FRIDAY
+
 
 #[cfg(test)]
 mod tests {
@@ -192,5 +192,49 @@ mod tests {
             ext.burn(caller, caller, id, U256::ONE),
             Err(Error::InsufficientBalance)
         );
+    }
+}
+
+// ——————————————————————————————————————————————————————————————————————————
+// motsu-driven integration tests
+// ——————————————————————————————————————————————————————————————————————————
+#[cfg(feature = "motsu")]
+#[cfg(test)]
+mod motsu_tests {
+    use super::*;
+    use alloy_primitives::U256;
+    use stylus_sdk::{prelude::*, testing::TestVM};
+    use motsu::prelude::*;
+
+    // let Motsu know how to snapshot & rollback storage
+    #[cfg(not(feature = "motsu"))]
+    unsafe impl stylus_sdk::testing::TopLevelStorage for Erc6909MetadataUri {}
+
+    fn fresh_contract() -> Contract<Erc6909MetadataUri> {
+        let vm = TestVM::default();
+        Contract::<Erc6909MetadataUri>::new(&vm)
+    }
+
+    #[motsu::test]
+    fn set_and_read_back(mut c: Contract<Erc6909MetadataUri>, samuel: Address) {
+        let id  = U256::from(42u64);
+        let uri = b"motsu://token/42".to_vec();
+
+        // samuel (non-zero) sets the URI
+        c.sender(samuel)
+        .set_token_uri(samuel, id, uri.clone())
+        .motsu_unwrap();
+
+        // And reading via the public getter returns the same bytes
+        let got = c.token_uri(id);
+        assert_eq!(got, uri);
+    }
+
+    #[motsu::test]
+    fn zero_caller_fails(mut c: Contract<Erc6909MetadataUri>) {
+        let zero = Address::new([0;20]);
+        c.sender(zero)
+        .set_token_uri(zero, U256::from(1u64), b"bad".to_vec())
+        .motsu_unwrap_err();
     }
 }
