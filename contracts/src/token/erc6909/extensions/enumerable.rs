@@ -95,3 +95,66 @@ mod tests {
         assert_eq!(ext.id_by_index(U256::from(5u64)), U256::ZERO);
     }
 }
+
+// ——————————————————————————————————————————————————————————————————————————
+// motsu-driven integration tests
+// Run the tests: cargo test -p openzeppelin-stylus --features stylus-test
+// ——————————————————————————————————————————————————————————————————————————
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use alloy_primitives::{Address, U256};
+    use stylus_sdk::testing::TestVM;
+    use motsu::prelude::*;
+
+    // Tell Motsu how to snapshot/rollback this pure-storage type
+    #[cfg(not(feature = "erc6909"))]
+    unsafe impl stylus_sdk::testing::TopLevelStorage for Erc6909Supply {}
+
+    /// Helper to get a fresh `Contract<Erc6909Supply>` and a random account
+    fn fresh() -> Contract<Erc6909Supply> {
+        Contract::<Erc6909Supply>::new(&TestVM::default())
+    }
+
+    #[motsu::test]
+    fn initial_total_is_zero(mut c: Contract<Erc6909Supply>, owner: Address) {
+        let id = U256::from(1u64);
+        // Nothing minted yet → total_supply must be zero
+        assert_eq!(c.total_supply(id), U256::ZERO);
+    }
+
+    #[motsu::test]
+    fn mint_increases_total(mut c: Contract<Erc6909Supply>, owner: Address) {
+        let id     = U256::from(7u64);
+        let amount = U256::from(42u64);
+
+        // Mint `amount` to `owner`
+        c.mint(owner, owner, id, amount).motsu_unwrap();
+
+        // Now the total supply for `id` should be exactly `amount`
+        assert_eq!(c.total_supply(id), amount);
+    }
+
+    #[motsu::test]
+    fn burn_decreases_total(mut c: Contract<Erc6909Supply>, owner: Address) {
+        let id         = U256::from(10u64);
+        let minted_amt = U256::from(50u64);
+        let burn_amt   = U256::from(15u64);
+
+        // Mint then burn
+        c.mint(owner, owner, id, minted_amt).motsu_unwrap();
+        c.burn(owner, owner, id, burn_amt).motsu_unwrap();
+
+        // Remaining supply = minted_amt - burn_amt
+        assert_eq!(c.total_supply(id), minted_amt - burn_amt);
+    }
+
+    #[motsu::test]
+    fn burn_without_mint_reverts(mut c: Contract<Erc6909Supply>, owner: Address) {
+        let id = U256::from(99u64);
+
+        // Trying to burn an ID that was never minted should revert
+        c.burn(owner, owner, id, U256::ONE)
+            .motsu_unwrap_err();
+    }
+}
