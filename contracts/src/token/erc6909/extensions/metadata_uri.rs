@@ -9,8 +9,6 @@ use stylus_sdk::{
     storage::{StorageMap, StorageUint},
 };
 
-// === change these imports to point at the core ERC-6909 and its traits
-// ===
 use super::super::{
     erc6909::Erc6909,
     error::Error,
