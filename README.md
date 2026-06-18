@@ -1,7 +1,8 @@
-# OpenZeppelin Contracts for Stylus
+# ERC-6909 for Open Stylus
 
 **A library for secure smart contract development** written in Rust for
 [Arbitrum Stylus](https://docs.arbitrum.io/stylus/gentle-introduction).
+ERC-6909 is a specification for managing multiple tokens by their id in a single contract.
 
 ## Features
 
